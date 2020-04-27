@@ -1,0 +1,49 @@
+{
+  "name": "oseille/container-builder-bridge",
+  "description": "A bridge to easily work with multiple types of PSR-11 container builder.",
+  "keywords": [
+    "bridge",
+    "PSR-11 container builder"
+  ],
+  "homepage": "https://github.com/oseille/container-builder-bridge",
+  "readme": "README.md",
+  "time": "2020-04-27",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/oseille/container-builder-bridge/issues",
+    "source": "https://github.com/oseille/container-builder-bridge",
+    "rss": "https://github.com/oseille/container-builder-bridge/releases.atom"
+  },
+  "authors": [
+    {
+      "name": "Olivier Jullien",
+      "homepage": "https://github.com/ojullien",
+      "email": "ojullien@netcourrier.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "psr/container": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Oseille\\ContainerBuilderBridge\\": "src/"
+    }
+  },
+  "require-dev": {
+    "php-coveralls/php-coveralls": "^2.2",
+    "phpunit/phpunit": "^9.1"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OseilleTest\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit --configuration ./phpunit.xml --coverage-clover build/logs/clover.xml"
+  }
+}
