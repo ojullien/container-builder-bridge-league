@@ -11,11 +11,11 @@ use function PHPUnit\Framework\assertInstanceOf;
 
 //use PbraidersTest\Utils\EmptyDIFactory;
 
-class AbstractContainerBuilderBridgeTest extends \PHPUnit\Framework\TestCase
+class AbstractionTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
-     * @covers \Oseille\ContainerBuilderBridge\AbstractContainerBuilderBridge
+     * @covers \Oseille\ContainerBuilderBridge\Abstraction
      * @group specification
      */
     public function testCreateContainer()

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace OseilleTest\Utils;
 
-use Oseille\ContainerBuilderBridge\ContainerBuilderInterface;
+use Oseille\ContainerBuilderBridge\ImplementorInterface;
 use Psr\Container\ContainerInterface;
 
 /**
  * An implementation of a PSR-11 container builder.
  */
-class StubBuilder implements ContainerBuilderInterface
+class StubBuilder implements ImplementorInterface
 {
     /**
      * Builds and returns the PSR-11 container.
@@ -28,7 +28,7 @@ class StubBuilder implements ContainerBuilderInterface
      * @param array $definitions The definitions.
      * @return \Oseille\ContainerBuilderBridge
      */
-    public function addDefinitions(...$definitions): ContainerBuilderInterface
+    public function addDefinitions(...$definitions): ImplementorInterface
     {
         return $this;
     }

@@ -1,18 +1,20 @@
 {
-  "name": "oseille/container-builder-bridge",
-  "description": "A bridge to easily work with multiple types of PSR-11 container builder.",
+  "name": "oseille/container-builder-bridge-league",
+  "description": "A concrete implementation of the Container Builder Bridge using league/container.",
   "keywords": [
     "bridge",
-    "PSR-11 container builder"
+    "builder",
+    "league",
+    "container"
   ],
-  "homepage": "https://github.com/oseille/container-builder-bridge",
+  "homepage": "https://github.com/oseille/container-builder-bridge-league",
   "readme": "README.md",
-  "time": "2020-04-27",
+  "time": "2020-04-28",
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/oseille/container-builder-bridge/issues",
-    "source": "https://github.com/oseille/container-builder-bridge",
-    "rss": "https://github.com/oseille/container-builder-bridge/releases.atom"
+    "issues": "https://github.com/oseille/container-builder-bridge-league/issues",
+    "source": "https://github.com/oseille/container-builder-bridge-league",
+    "rss": "https://github.com/oseille/container-builder-bridge-league/releases.atom"
   },
   "authors": [
     {
@@ -21,13 +23,20 @@
       "email": "ojullien@netcourrier.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "github",
+      "url": "https://github.com/oseille/container-builder-bridge"
+    }
+  ],
   "require": {
     "php": "^7.4",
-    "psr/container": "^1.0"
+    "league/container": "^3.3",
+    "oseille/container-builder-bridge": "^1.0"
   },
   "autoload": {
     "psr-4": {
-      "Oseille\\ContainerBuilderBridge\\": "src/"
+      "Oseille\\ContainerBuilderBridge\\League\\": "src/"
     }
   },
   "require-dev": {

@@ -2,12 +2,21 @@
 
 declare(strict_types=1);
 
-namespace OseilleTest\Utils;
+/**
+ * @package Oseille\ContainerBuilderBridge\League
+ * @link    https://github.com/oseille/container-builder-bridge-league for the canonical source repository
+ * @license https://github.com/oseille/container-builder-bridge-league/blob/master/LICENSE MIT
+ */
 
-use Psr\Container\ContainerInterface;
+namespace Oseille\ContainerBuilderBridge\League;
+
 use Oseille\ContainerBuilderBridge\Abstraction;
+use Psr\Container\ContainerInterface;
 
-class StubBridge extends Abstraction
+/**
+ *
+ */
+final class LeagueAbstraction extends Abstraction
 {
     /**
      * Builds and returns the PSR-11 container.
@@ -22,11 +31,12 @@ class StubBridge extends Abstraction
     /**
      * Add definitions to the container.
      *
-     * @param array $definitions Array of definitions
+     * @param mixed $definitions,... Array of definitions
      * @return \Oseille\ContainerBuilderBridge\Abstraction
      */
     public function addDefinitions(...$definitions): Abstraction
     {
+        $this->pContainerBuilder->addDefinitions($definitions);
         return $this;
     }
 }

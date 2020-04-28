@@ -1,10 +1,8 @@
-# Container Builder Bridge
+# Container Builder Bridge League
 
-![PHP Composer](https://github.com/oseille/container-builder-bridge/workflows/PHP%20Composer/badge.svg?branch=master)
+![PHP Composer](https://github.com/oseille/container-builder-bridge-league/workflows/PHP%20Composer/badge.svg?branch=master)
 
-A bridge to easily work with multiple types of PSR-11 container builder like DI\ContainerBuilder.
-
-_Note: The package defines only the abstraction and the implementation interface._
+A concrete implementation of the [Container Builder Bridge](https://github.com/oseille/container-builder-bridge) using [league/container](https://github.com/thephpleague/container)
 
 ## Table of Contents
 
