@@ -56,6 +56,7 @@
     "optimize-autoloader": true
   },
   "scripts": {
+    "pbraiders/stdlib": "^2.0",
     "analysebyphpstan": "vendor/bin/phpstan analyse src --level=max -c ./phpstan.neon --no-progress",
     "analysebymd": "vendor/bin/phpmd src text ./phpmd.xml --exclude '*/vendor/*,*/old/*'",
     "analysebypsalm": "vendor/bin/psalm --config=./psalm.xml",

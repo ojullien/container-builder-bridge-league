@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "629e614d2cc2209703c92daf60449ca5",
+    "content-hash": "142b98e64a8dee16d46a9d8fc8c3b5be",
     "packages": [
         {
             "name": "league/container",
@@ -1401,6 +1401,69 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "pbraiders/stdlib",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pbraiders/stdlib.git",
+                "reference": "4ba5bca1d516999c33d2255225af9857912a6641"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pbraiders/stdlib/zipball/4ba5bca1d516999c33d2255225af9857912a6641",
+                "reference": "4ba5bca1d516999c33d2255225af9857912a6641",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^9.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pbraiders\\Stdlib\\": "src/"
+                },
+                "files": [
+                    "src/Stdlib.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "PbraidersTest\\Stdlib\\": "tests/"
+                },
+                "files": [
+                    "src/Stdlib.php"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit --configuration ./phpunit.xml.dist --coverage-clover build/tests/clover.xml"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Olivier Jullien",
+                    "homepage": "https://github.com/ojullien",
+                    "email": "contact@pbraiders.fr"
+                }
+            ],
+            "description": "Pbraiders stdlib component",
+            "homepage": "https://github.com/pbraiders/stdlib",
+            "support": {
+                "email": "contact@pbraiders.fr",
+                "docs": "https://github.com/pbraiders/stdlib/docs",
+                "issues": "https://github.com/pbraiders/stdlib/issues",
+                "source": "https://github.com/pbraiders/stdlib"
+            },
+            "time": "2020-04-25T00:00:00+00:00"
         },
         {
             "name": "pdepend/pdepend",

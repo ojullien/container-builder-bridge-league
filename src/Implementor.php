@@ -125,7 +125,7 @@ final class Implementor implements ImplementorInterface
         // Parse the arguments
         foreach ($definitions as $definition) {
             // Must be an array
-            if (! is_array($definition)) {
+            if (!is_array($definition)) {
                 throw new \InvalidArgumentException(sprintf(
                     '%s parameter must be an array, %s given',
                     '\Oseille\ContainerBuilderBridge\League\Implementor::addDefinitions()',
@@ -133,17 +133,35 @@ final class Implementor implements ImplementorInterface
                 ));
             }
 
-            // Process service rpoviders
-            $this->addProviders(array_intersect_key($definition, ['service_providers' => true]));
+            // Process service providers
+            $this->addProviders($this->getArrayIntersectKey('service_providers', $definition));
 
             // Process shared factories
-            $this->addSharedFactories(array_intersect_key($definition, ['shared_factories' => true]));
+            $this->addSharedFactories($this->getArrayIntersectKey('shared_factories', $definition));
 
             // Process factories
-            $this->addFactories(array_intersect_key($definition, ['factories' => true]));
+            $this->addFactories($this->getArrayIntersectKey('factories', $definition));
             $this->addFactories(array_diff_key($definition, ['factories' => true, 'service_providers' => true, 'shared_factories' => true]));
         }
 
         return $this;
+    }
+
+    /**
+     * Returns the value of the intersection of arrays using keys for comparison.
+     * ALso, returns an empty array if the value is not an array.
+     *
+     * @param string $sKey The key to check
+     * @param array $aDefinitions The array with the key to check
+     * @return array
+     */
+    private function getArrayIntersectKey(string $sKey, array $aDefinitions): array
+    {
+        $aReturn = [];
+        $aBuffer = array_intersect_key($aDefinitions, [$sKey => true]);
+        if (count($aBuffer) && \is_array($aBuffer[$sKey])) {
+            $aReturn = $aBuffer[$sKey];
+        }
+        return $aReturn;
     }
 }

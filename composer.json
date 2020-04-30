@@ -27,6 +27,10 @@
     {
       "type": "github",
       "url": "https://github.com/oseille/container-builder-bridge"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/pbraiders/stdlib"
     }
   ],
   "require": {
@@ -40,6 +44,7 @@
     }
   },
   "require-dev": {
+    "pbraiders/stdlib": "^2.0",
     "friendsofphp/php-cs-fixer": "^2.16",
     "overtrue/phplint": "^2.0",
     "php-coveralls/php-coveralls": "^2.2",
