@@ -17,15 +17,17 @@ use Psr\Container\ContainerInterface;
 /**
  *
  */
-final class Implementor extends ImplementorInterface
+final class Implementor implements ImplementorInterface
 {
     /**
+     * PSR-11 Container.
      *
+     * @var \League\Container\Container
      */
-    private Container $pContainer;
+    private $pContainer;
 
     /**
-     * Undocumented function
+     * Constructor.
      *
      * @param \League\Container\Container $pContainer
      */
@@ -45,14 +47,103 @@ final class Implementor extends ImplementorInterface
     }
 
     /**
+     * Populates the container with service providers.
+     *
+     * @link https://container.thephpleague.com/3.x/service-providers/
+     * @param array $aProviders Array of class name. The class name should be class that may be
+     *                          directly instantiated without any constructor arguments
+     * @return void
+     */
+    private function addProviders(array $aProviders): void
+    {
+        foreach ($aProviders as $sProvider) {
+            $this->pContainer->addServiceProvider($sProvider);
+        }
+    }
+
+    /**
+     * Populates the container with shared objects.
+     *
+     * @link https://container.thephpleague.com/3.x/definitions/
+     * @param array $aSharedFactories An array of service name/factory class name pairs.
+     *                                The factories should be any PHP callbacks.
+     * @return void
+     */
+    private function addSharedFactories(array $aSharedFactories): void
+    {
+        foreach ($aSharedFactories as $sAlias => $aSharedFactory) {
+            $this->pContainer->share($sAlias, $aSharedFactory)->addArgument($this->pContainer);
+        }
+    }
+
+    /**
+     * Populates the container with factories.
+     *
+     * @param array $aFactories An array of service name/factory class name pairs.
+     *                          The factories should be any PHP callbacks.
+     * @return void
+     */
+    private function addFactories(array $aFactories): void
+    {
+        foreach ($aFactories as $sAlias => $aFactory) {
+            $this->pContainer->add($sAlias, $aFactory)->addArgument($this->pContainer);
+        }
+    }
+
+    /**
      * Add definitions to the container.
      *
+     * A definition is a key value paired like:
+     * [
+     *  Acme\Foo::class => function (ContainerInterface $container) {...},
+     *  Acme\Bar::class => function (ContainerInterface $container) {...},
+     *  ...
+     * ]
+     *
+     * or (\League\Container specific)
+     * [
+     *  'shared_factories' => [
+     *    Acme\Bar::class => function (ContainerInterface $container) {...},
+     *    ...
+     *   ],
+     *  'factories' => [
+     *    Acme\Baz::class => function (ContainerInterface $container) {...},
+     *    ...
+     *   ],
+     *  'service_providers' => [
+     *     Acme\Foo::class,
+     *     ...
+     *   ]
+     * ]
+     *
      * @param mixed $definitions,... The definitions.
-     * @throws \InvalidArgumentException if $id is not valid
+     * @throws \InvalidArgumentException if $definitions is not an array
      * @return \Oseille\ContainerBuilderBridge\ImplementorInterface
      */
     public function addDefinitions(...$definitions): ImplementorInterface
     {
+        // Parse the arguments
+        foreach ($definitions as $definition) {
+            // Must be an array
+            if (! is_array($definition)) {
+                throw new \InvalidArgumentException(sprintf(
+                    '%s parameter must be an array, %s given',
+                    '\Oseille\ContainerBuilderBridge\League\Implementor::addDefinitions()',
+                    is_object($definition) ? get_class($definition) : gettype($definition)
+                ));
+            }
+
+            // Process service rpoviders
+            $this->addProviders(array_intersect_key($definition, ['service_providers' => true]));
+
+            // Process shared factories
+            $this->addSharedFactories(array_intersect_key($definition, ['shared_factories' => true]));
+
+            // Process factories
+            $this->addFactories(array_intersect_key($definition, ['factories' => true]));
+            $this->addFactories(array_diff_key($definition, ['factories' => true, 'service_providers' => true, 'shared_factories' => true]));
+        }
+
         return $this;
     }
 }
