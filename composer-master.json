@@ -22,6 +22,10 @@
     {
       "type": "github",
       "url": "https://github.com/oseille/container-builder-bridge"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/pbraiders/stdlib"
     }
   ],
   "require": {

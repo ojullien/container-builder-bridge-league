@@ -12,6 +12,7 @@ A concrete implementation of the [Container Builder Bridge](https://github.com/o
 
 - PHP: ^7.4
 - oseille/container-builder-bridge: ^1.0
+- league/container: ^3.3
 
 ## Installation
 
@@ -28,16 +29,16 @@ Alternatively, [download a release](https://github.com/oseille/container-builder
 We do not provide exhaustive documentation. Please read the code and the comments ;)
 
 ```php
-// Instanciate and configure the PSR-11 container
+// Instanciates and configures the PSR-11 container
 $container_builder = new \League\Container\Container();
 
-// Instanciate the implementor to use thru the bridge builder
+// Instanciates the implementor to use thru the bridge builder
 $bridge_builder = new \Oseille\ContainerBuilderBridge\League\Implementor($container_builder);
 
-// Add the definitions to the builder
+// Adds the definitions to the builder
 $bridge_builder->addDefinitions($definitions);
 
-// Build the container
+// Builds the container
 $container = $bridge_builder->build();
 ```
 
