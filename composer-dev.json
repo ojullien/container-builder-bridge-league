@@ -22,6 +22,10 @@
     {
       "type": "github",
       "url": "https://github.com/oseille/container-builder-bridge"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/pbraiders/stdlib"
     }
   ],
   "require": {
@@ -35,7 +39,8 @@
     }
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.16",
+    "pbraiders/stdlib": "^2.0",
+    "friendsofphp/php-cs-fixer": "^2.16.3",
     "overtrue/phplint": "^2.0",
     "php-coveralls/php-coveralls": "^2.2",
     "phpmd/phpmd": "^2.8",
@@ -56,10 +61,9 @@
     "optimize-autoloader": true
   },
   "scripts": {
-    "pbraiders/stdlib": "^2.0",
     "analysebyphpstan": "vendor/bin/phpstan analyse src --level=max -c ./phpstan.neon --no-progress",
     "analysebymd": "vendor/bin/phpmd src text ./phpmd.xml --exclude '*/vendor/*,*/old/*'",
-    "analysebypsalm": "vendor/bin/psalm --config=./psalm.xml",
+    "analysebypsalm": "vendor/bin/psalm --config=./psalm.xml --show-info=true",
     "check": "vendor/bin/phpcs --standard=./phpcs.xml",
     "fix": ["@fixbysquizlabs", "@fixbyfriendsofphp"],
     "fixbysquizlabs": "vendor/bin/phpcbf --standard=./phpcs.xml",

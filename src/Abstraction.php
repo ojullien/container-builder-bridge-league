@@ -55,7 +55,7 @@ final class Abstraction extends BridgeAbstraction
      *   ]
      * ]
      *
-     * @param mixed $definitions,... The definitions.
+     * @param array<int,array> $definitions,... The definitions.
      * @throws \InvalidArgumentException if $definitions is not an array
      * @return \Oseille\ContainerBuilderBridge\Abstraction
      */

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "142b98e64a8dee16d46a9d8fc8c3b5be",
+    "content-hash": "7a0cc474ed3c185b7a6c8ab8edf53a3a",
     "packages": [
         {
             "name": "league/container",
@@ -74,16 +74,16 @@
         },
         {
             "name": "oseille/container-builder-bridge",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oseille/container-builder-bridge.git",
-                "reference": "1a3c061db2401d252013707f387db36c275b8788"
+                "reference": "e77d23dcdca1222425ed4137a5c35acac865cbdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oseille/container-builder-bridge/zipball/1a3c061db2401d252013707f387db36c275b8788",
-                "reference": "1a3c061db2401d252013707f387db36c275b8788",
+                "url": "https://api.github.com/repos/oseille/container-builder-bridge/zipball/e77d23dcdca1222425ed4137a5c35acac865cbdd",
+                "reference": "e77d23dcdca1222425ed4137a5c35acac865cbdd",
                 "shasum": ""
             },
             "require": {

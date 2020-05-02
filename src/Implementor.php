@@ -50,14 +50,18 @@ final class Implementor implements ImplementorInterface
      * Populates the container with service providers.
      *
      * @link https://container.thephpleague.com/3.x/service-providers/
-     * @param array $aProviders Array of class name. The class name should be class that may be
-     *                          directly instantiated without any constructor arguments
+     * @param array<array-key, mixed> $aProviders Array of class name.
+     *                                            The class name should be class that may be
+     *                                            directly instantiated without any constructor arguments
      * @return void
      */
     private function addProviders(array $aProviders): void
     {
+        /**
+         * @var string $sProvider Full class name
+         */
         foreach ($aProviders as $sProvider) {
-            $this->pContainer->addServiceProvider($sProvider);
+            $this->pContainer->addServiceProvider((string) $sProvider);
         }
     }
 
@@ -65,28 +69,36 @@ final class Implementor implements ImplementorInterface
      * Populates the container with shared objects.
      *
      * @link https://container.thephpleague.com/3.x/definitions/
-     * @param array $aSharedFactories An array of service name/factory class name pairs.
-     *                                The factories should be any PHP callbacks.
+     * @param array<array-key, mixed> $aSharedFactories An array of service name/factory class name pairs.
+     *                                                  The factories should be any PHP callbacks.
      * @return void
      */
     private function addSharedFactories(array $aSharedFactories): void
     {
-        foreach ($aSharedFactories as $sAlias => $aSharedFactory) {
-            $this->pContainer->share($sAlias, $aSharedFactory)->addArgument($this->pContainer);
+        /**
+         * @var callable $pCallable Any PHP callable
+         * @var string $sAlias Alias
+         */
+        foreach ($aSharedFactories as $sAlias => $pCallable) {
+            $this->pContainer->share((string) $sAlias, $pCallable)->addArgument($this->pContainer);
         }
     }
 
     /**
      * Populates the container with factories.
      *
-     * @param array $aFactories An array of service name/factory class name pairs.
-     *                          The factories should be any PHP callbacks.
+     * @param array<array-key, mixed> $aFactories An array of service name/factory class name pairs.
+     *                                            The factories should be any PHP callbacks.
      * @return void
      */
     private function addFactories(array $aFactories): void
     {
-        foreach ($aFactories as $sAlias => $aFactory) {
-            $this->pContainer->add($sAlias, $aFactory)->addArgument($this->pContainer);
+        /**
+         * @var callable $pCallable Any PHP callable
+         * @var string $sAlias Alias
+         */
+        foreach ($aFactories as $sAlias => $pCallable) {
+            $this->pContainer->add((string) $sAlias, $pCallable)->addArgument($this->pContainer);
         }
     }
 
@@ -116,16 +128,20 @@ final class Implementor implements ImplementorInterface
      *   ]
      * ]
      *
-     * @param mixed $definitions,... The definitions.
+     * @param array<int,array> $definitions,... The definitions.
      * @throws \InvalidArgumentException if $definitions is not an array
      * @return \Oseille\ContainerBuilderBridge\ImplementorInterface
      */
     public function addDefinitions(...$definitions): ImplementorInterface
     {
-        // Parse the arguments
+        /**
+         * Parse the arguments
+         *
+         * @var array<array-key, mixed> $definition
+         */
         foreach ($definitions as $definition) {
             // Must be an array
-            if (!is_array($definition)) {
+            if (! is_array($definition)) {
                 throw new \InvalidArgumentException(sprintf(
                     '%s parameter must be an array, %s given',
                     '\Oseille\ContainerBuilderBridge\League\Implementor::addDefinitions()',
@@ -152,14 +168,14 @@ final class Implementor implements ImplementorInterface
      * ALso, returns an empty array if the value is not an array.
      *
      * @param string $sKey The key to check
-     * @param array $aDefinitions The array with the key to check
-     * @return array
+     * @param array<array-key, mixed> $aDefinitions The array with the key to check
+     * @return array<array-key, mixed>
      */
     private function getArrayIntersectKey(string $sKey, array $aDefinitions): array
     {
         $aReturn = [];
         $aBuffer = array_intersect_key($aDefinitions, [$sKey => true]);
-        if (count($aBuffer) && \is_array($aBuffer[$sKey])) {
+        if ((count($aBuffer) > 0) && \is_array($aBuffer[$sKey])) {
             $aReturn = $aBuffer[$sKey];
         }
         return $aReturn;
