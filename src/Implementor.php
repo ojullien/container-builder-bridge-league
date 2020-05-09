@@ -39,7 +39,7 @@ final class Implementor implements ImplementorInterface
     /**
      * Builds and returns the PSR-11 container.
      *
-     * @return \Psr\Container\ContainerInterface
+     * @return Container
      */
     public function build(): ContainerInterface
     {
@@ -129,10 +129,12 @@ final class Implementor implements ImplementorInterface
      * ]
      *
      * @param array<int,array> $definitions,... The definitions.
+     *
      * @throws \InvalidArgumentException if $definitions is not an array
-     * @return \Oseille\ContainerBuilderBridge\ImplementorInterface
+     *
+     * @return self
      */
-    public function addDefinitions(...$definitions): ImplementorInterface
+    public function addDefinitions(...$definitions): self
     {
         /**
          * Parse the arguments
@@ -167,7 +169,7 @@ final class Implementor implements ImplementorInterface
      * Returns the value of the intersection of arrays using keys for comparison.
      * ALso, returns an empty array if the value is not an array.
      *
-     * @param string $sKey The key to check
+     * @param string                  $sKey         The key to check
      * @param array<array-key, mixed> $aDefinitions The array with the key to check
      * @return array<array-key, mixed>
      */

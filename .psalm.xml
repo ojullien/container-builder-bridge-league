@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <psalm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xmlns="https://getpsalm.org/schema/config" xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd" 
-    xmlns:xi="http://www.w3.org/2001/XInclude" errorLevel="1" reportMixedIssues="true" resolveFromConfigFile="true" useDocblockTypes="true" usePhpDocMethodsWithoutMagicCall="false" strictBinaryOperands="false" requireVoidReturnType="true" useAssertForType="true" rememberPropertyAssignmentsAfterCall="true" allowPhpStormGenerics="false" allowCoercionFromStringToClassConst="false" allowStringToStandInForClass="false" memoizeMethodCallResults="false" hoistConstants="false" addParamDefaultToDocblockType="false" checkForThrowsDocblock="true" ignoreInternalFunctionFalseReturn="true" ignoreInternalFunctionNullReturn="false" findUnusedVariablesAndParams="true" findUnusedCode="true" loadXdebugStub="true" ensureArrayStringOffsetsExist="true" skipChecksOnUnresolvableIncludes="false" useDocblockPropertyTypes="false" checkForThrowsInGlobalScope="true" throwExceptionOnError="false" cacheDirectory="build/psalm" hideExternalErrors="true">
+    xmlns:xi="http://www.w3.org/2001/XInclude" cacheDirectory="build/psalm" resolveFromConfigFile="true" checkForThrowsDocblock="true" addParamDefaultToDocblockType="true" ignoreInternalFunctionNullReturn="false" findUnusedVariablesAndParams="true" findUnusedCode="true" ensureArrayStringOffsetsExist="true" skipChecksOnUnresolvableIncludes="false" checkForThrowsInGlobalScope="true" errorBaseline="rules/psalm-baseline.xml">
     <projectFiles>
         <directory name="src/" />
         <ignoreFiles>
             <directory name="vendor/" />
+            <directory name="tests/" />
         </ignoreFiles>
     </projectFiles>
 
