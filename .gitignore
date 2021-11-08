@@ -1,7 +1,3 @@
-.vscode/
+/.vscode/
+/var/
 /vendor/
-/build/
-.php_cs.cache
-*.log
-local.*
-desktop.ini

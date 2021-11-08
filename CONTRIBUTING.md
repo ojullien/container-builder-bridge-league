@@ -27,7 +27,7 @@ Pull requests are the best way to propose changes to the codebase. There are war
 
 ## Bug and fix
 
-If you encounter any **bugs**, please open an [issue](https://github.com/oseille/container-builder-bridge-league/issues/new).
+If you encounter any **bugs**, please open an [issue](https://github.com/ojullien/container-builder-bridge-league/issues/new).
 
 **Great Bug Reports** tend to have:
 
