@@ -2,7 +2,7 @@
 
 Thanks you for taking the time to contribute! Please fork the repository and make changes as you'd like.
 
-As we use this application for our own projects, it contains only the features we need. But, we want to make contributing to this project as easy and transparent as possible, whether it's:
+As we use this component for our own projects, it contains only the features we need. But, we want to make contributing to this project as easy and transparent as possible, whether it's:
 
 - Reporting a bug
 - Discussing the current state of the code

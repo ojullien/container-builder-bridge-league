@@ -9,15 +9,17 @@ A concrete implementation of the [Container Builder Bridge](https://github.com/o
 
 ## Requirements
 
+This package requires:
+
 - PHP: ^8.0
-- ojullien/container-builder-bridge: ^1.0
-- league/container: ^4.1.2
+- ojullien/container-builder-bridge: ^1.1
+- league/container: ^4.2
 
-## Installation
-
-This package requires PHP 8.0. For specifics, please examine the package [composer.json](https://github.com/ojullien/container-builder-bridge-league/blob/master/composer.json) file.
+For specifics, please examine the manifest [composer.json](https://github.com/ojullien/container-builder-bridge-league/blob/master/composer.json) file.
 
 You may check if your PHP and extension versions match the platform requirements using `composer diagnose` and `composer check-platform-reqs`. (This requires [Composer](https://getcomposer.org/) to be available as composer.)
+
+## Installation
 
 This package is installable and PSR-4 autoloadable via [Composer](https://getcomposer.org/) as ojullien/container-builder-bridge-league. For no dev, use `composer install --no-dev` and for dev, use `composer install`.
 
@@ -27,18 +29,53 @@ Alternatively, [download a release](https://github.com/ojullien/container-builde
 
 We do not provide exhaustive documentation. Please read the code and the comments ;)
 
+Using the default ContainerBuilderBridge\Builder:
+
 ```php
-// Instanciates and configures the PSR-11 container
-$container_builder = new \League\Container\Container();
+// As League\Container does not have a builder. 
+// We instanciate and configure the PSR-11 container
+$builder = new \League\Container\Container();
 
-// Instanciates the implementor to use thru the bridge builder
-$bridge_builder = new \OJullien\ContainerBuilderBridge\League\Implementor($container_builder);
+// Instanciates the implementation to use thru the bridge builder
+$implementation = new \OJullien\ContainerBuilderBridge\League\Implementation($builder);
 
-// Adds the definitions to the builder
-$bridge_builder->addDefinitions($definitions);
+// Instanciates the bridge
+$bridge = new \OJullien\ContainerBuilderBridge\Builder($implementation);
 
-// Builds the container
-$container = $bridge_builder->build();
+// Create definitions using sequences
+$sequence = Sequence::getSequence();
+$sequence = $sequence->withDefinition('database.host', 'localhost')
+                     ->withDefinition('database.port', 5000)
+                     ->withDefinition('report.recipients', ['bob@example.com','alice@example.com',])
+                     ->withDefinition('factory',static function (ContainerInterface $container){...});
+
+// Builds the PSR-11 container
+$container = $bridge->getContainer($sequence);
+```
+
+Using the extended ContainerBuilderBridge\League\Builder:
+
+```php
+// As League\Container does not have a builder. 
+// We instanciate and configure the PSR-11 container
+$builder = new \League\Container\Container();
+
+// Instanciates the implementation to use thru the bridge builder
+$implementation = new \OJullien\ContainerBuilderBridge\League\Implementation($builder);
+
+// Instanciates the bridge
+$bridge = new \OJullien\ContainerBuilderBridge\League\Builder($implementation);
+
+// Create shared definitions using sequences
+$sequence = Sequence::getSequence();
+$sequence = $sequence->withDefinition(SomeServiceProvider::class);
+
+// Builds the PSR-11 container
+$container = $bridge->addSharedDefinitions($sequence);
+
+// Builds the PSR-11 container with service provider
+$container = $bridge->addServiceProviders(new SomeServiceProvider());
+
 ```
 
 ## Test
