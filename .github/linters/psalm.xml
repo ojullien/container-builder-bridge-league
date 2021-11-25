@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<psalm
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config ../../vendor/vimeo/psalm/config.xsd"
+    resolveFromConfigFile="true"
+    useDocblockTypes="true"
+    useDocblockPropertyTypes="false"
+    usePhpDocMethodsWithoutMagicCall="false"
+    usePhpDocPropertiesWithoutMagicCall="false"
+    strictBinaryOperands="true"
+    rememberPropertyAssignmentsAfterCall="true"
+    allowStringToStandInForClass="false"
+    memoizeMethodCallResults="false"
+    hoistConstants="false"
+    addParamDefaultToDocblockType="false"
+    checkForThrowsDocblock="true"
+    checkForThrowsInGlobalScope="true"
+    ignoreInternalFunctionFalseReturn="true"
+    ignoreInternalFunctionNullReturn="false"
+    inferPropertyTypesFromConstructor="true"
+    findUnusedVariablesAndParams="true"
+    findUnusedCode="false"
+    findUnusedPsalmSuppress="true"
+    loadXdebugStub="false"
+    ensureArrayStringOffsetsExist="true"
+    ensureArrayIntOffsetsExist="true"
+    skipChecksOnUnresolvableIncludes="false"
+    sealAllMethods="false"
+    runTaintAnalysis="false"
+    throwExceptionOnError="false"
+    hideExternalErrors="false"
+    allowFileIncludes="true"
+    totallyTyped="true">
+    <projectFiles>
+        <directory name="../../src"/>
+        <directory name="../../tests"/>
+        <ignoreFiles>
+            <directory name="../../var"/>
+            <directory name="../../vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+    <plugins>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+    </plugins>
+</psalm>

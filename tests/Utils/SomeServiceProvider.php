@@ -2,25 +2,34 @@
 
 declare(strict_types=1);
 
-namespace OseilleTest\Utils;
+namespace OJullienTest\Utils;
 
-use \League\Container\ServiceProvider\AbstractServiceProvider;
+use League\Container\ServiceProvider\AbstractServiceProvider;
 
-class ServiceProvider extends AbstractServiceProvider
+class SomeServiceProvider extends AbstractServiceProvider
 {
     /**
-     * The provided array is a way to let the container
+     * The provides method is a way to let the container
      * know that a service is provided by this service
      * provider. Every service that is registered via
      * this service provider must have an alias added
      * to this array or it will be ignored.
      *
-     * @var array
+     * @param string $id
+     * @return boolean
      */
-    protected $provides = [
-        'service1',
-        'service2'
-    ];
+    public function provides(string $id): bool
+    {
+        /**
+         * @var array<array-key,mixed>
+         */
+        $services = [
+            'service1',
+            'service2'
+        ];
+
+        return in_array($id, $services, \true);
+    }
 
     /**
      * This is where the magic happens, within the method you can

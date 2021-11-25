@@ -2,7 +2,7 @@
 
 Thanks you for taking the time to contribute! Please fork the repository and make changes as you'd like.
 
-As we use this application for our own projects, it contains only the features we need. But, we want to make contributing to this project as easy and transparent as possible, whether it's:
+As we use this component for our own projects, it contains only the features we need. But, we want to make contributing to this project as easy and transparent as possible, whether it's:
 
 - Reporting a bug
 - Discussing the current state of the code
@@ -27,7 +27,7 @@ Pull requests are the best way to propose changes to the codebase. There are war
 
 ## Bug and fix
 
-If you encounter any **bugs**, please open an [issue](https://github.com/oseille/container-builder-bridge-league/issues/new).
+If you encounter any **bugs**, please open an [issue](https://github.com/ojullien/container-builder-bridge-league/issues/new).
 
 **Great Bug Reports** tend to have:
 

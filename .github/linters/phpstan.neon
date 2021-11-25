@@ -1,0 +1,16 @@
+includes:
+    - ../../vendor/phpstan/phpstan-strict-rules/rules.neon
+    - ../../vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - ../../vendor/phpstan/phpstan-phpunit/rules.neon
+    - ../../vendor/phpstan/phpstan/conf/bleedingEdge.neon
+
+parameters:
+    tmpDir: ../../var/cache/phpstan
+    level: 8
+    paths:
+        - ../../src
+        - ../../tests
+    excludePaths:
+        - ../../.github
+        - ../../var
+        - ../../vendor
