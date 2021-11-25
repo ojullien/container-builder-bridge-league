@@ -24,6 +24,12 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-cache
 
+      - name: Lint with PHPStan
+        run: composer run stan
+
+      - name: Lint with psalm
+        run: composer run psalm
+
       - name: Lint Code Base
         uses: github/super-linter/slim@v4
         env:
@@ -31,7 +37,7 @@ jobs:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_PHP_PHPCS: true
-          VALIDATE_PHP_PHPSTAN: true
-          VALIDATE_PHP_PSALM: true
+#          VALIDATE_PHP_PHPSTAN: true
+#          VALIDATE_PHP_PSALM: true
           LINTER_RULES_PATH: .github/linters
           FILTER_REGEX_EXCLUDE: '(composer.lock)'

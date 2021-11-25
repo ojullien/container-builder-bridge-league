@@ -3,7 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config ../../vendor/vimeo/psalm/config.xsd"
-    errorLevel="1"
     resolveFromConfigFile="true"
     useDocblockTypes="true"
     useDocblockPropertyTypes="false"
@@ -21,23 +20,27 @@
     ignoreInternalFunctionNullReturn="false"
     inferPropertyTypesFromConstructor="true"
     findUnusedVariablesAndParams="true"
-    findUnusedCode="true"
+    findUnusedCode="false"
     findUnusedPsalmSuppress="true"
     loadXdebugStub="false"
     ensureArrayStringOffsetsExist="true"
     ensureArrayIntOffsetsExist="true"
     skipChecksOnUnresolvableIncludes="false"
     sealAllMethods="false"
-    runTaintAnalysis="true"
+    runTaintAnalysis="false"
     throwExceptionOnError="false"
     hideExternalErrors="false"
-    cacheDirectory="../../var/cache/psalm"
-    allowFileIncludes="true">
+    allowFileIncludes="true"
+    totallyTyped="true">
     <projectFiles>
         <directory name="../../src"/>
+        <directory name="../../tests"/>
         <ignoreFiles>
-            <directory name="../../tests"/>
+            <directory name="../../var"/>
             <directory name="../../vendor"/>
         </ignoreFiles>
     </projectFiles>
+    <plugins>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+    </plugins>
 </psalm>
