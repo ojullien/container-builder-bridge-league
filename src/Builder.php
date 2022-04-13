@@ -20,7 +20,6 @@ use Psr\Container\ContainerInterface;
  */
 final class Builder extends ContainerBuilderBridgeBuilder
 {
-
     /**
      * Initializes with one of the implementation objects.
      *

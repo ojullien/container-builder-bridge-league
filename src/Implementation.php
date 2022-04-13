@@ -21,7 +21,6 @@ use Psr\Container\ContainerInterface;
  */
 final class Implementation implements ExtendedImplementationInterface
 {
-
     /**
      * Constructor.
      *

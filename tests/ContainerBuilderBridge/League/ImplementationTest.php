@@ -12,7 +12,6 @@ use Psr\Container\ContainerInterface;
 
 class ImplementationTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @covers \OJullien\ContainerBuilderBridge\League\Implementation
      * @uses \OJullien\ContainerBuilderBridge\Definition\Sequence

@@ -15,7 +15,6 @@ use Psr\Container\ContainerInterface;
  */
 class ImplementationStub implements ExtendedImplementationInterface
 {
-
     /**
      * Builds and returns the PSR-11 container.
      *

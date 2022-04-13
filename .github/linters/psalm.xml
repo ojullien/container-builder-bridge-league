@@ -22,7 +22,6 @@
     findUnusedVariablesAndParams="true"
     findUnusedCode="false"
     findUnusedPsalmSuppress="true"
-    loadXdebugStub="false"
     ensureArrayStringOffsetsExist="true"
     ensureArrayIntOffsetsExist="true"
     skipChecksOnUnresolvableIncludes="false"
@@ -30,8 +29,7 @@
     runTaintAnalysis="false"
     throwExceptionOnError="false"
     hideExternalErrors="false"
-    allowFileIncludes="true"
-    totallyTyped="true">
+    allowFileIncludes="true">
     <projectFiles>
         <directory name="../../src"/>
         <directory name="../../tests"/>
